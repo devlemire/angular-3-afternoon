@@ -14,6 +14,8 @@ Live example: <a href="#">Click Me!</a>
   * If you do not have `live-server`: Run `sudo npm i -g live-server`.
 * Go to provided URL by `live-server` in your browser if it doesn't automatically open a browser window.
 
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/1.png" />
+
 ## Step 1
 
 ### Summary
