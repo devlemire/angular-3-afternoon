@@ -13,7 +13,7 @@ lib/
 data/
 dump/
 
-DS_Store
+.DS_Store
 .jshintrc
 .npmignore
 .editorconfig
