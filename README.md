@@ -38,6 +38,64 @@ In this step, we'll configure the router to handle all the other provided views.
 * Add the following new routes to the `config`:
   * Name: `packages` - Url: `/packages/:country` - Template: `app/packages/packagesTmpl.html`.
   * Name: `locations` - Url: `/locations` - Template: `app/locations/locationsTmpl.html`.
+  * Name: `booked` - Url: `/booked/:id` - Template: `app/booked/bookedTmpl.html`.
+  * Name: `adventurers` - Url: `/adventurers` - Template: `app/about/adventurers/adventurersTmpl.html`.
+    * This route should be a sub-route of the home page.
+  * Name: `contact` - Url: `/contact` - Template: `app/contact/contactTmpl.html`.
+    * This route should be a sub-route of the home page.
+
+<details>
+
+<summary> Detailed Instructions </summary>
+
+<br />
+
+
+
+</details>
+
+### Solution
+
+<details>
+
+<summary> <code> app/app.js </code> </summary>
+
+```js
+angular.module('devmtnTravel', ['ui.router']).config( function ( $stateProvider, $urlRouterProvider ) {
+  $stateProvider
+    .state('home',{
+      url:'/',
+      templateUrl: 'app/about/aboutTmpl.html'
+    })
+    .state('packages', {
+      url: '/packages/:country',
+      templateUrl: 'app/packages/packagesTmpl.html'
+    })
+    .state('locations', {
+      url: '/locations',
+      templateUrl: 'app/locations/locationsTmpl.html'
+    })
+    .state('booked', {
+      url: '/booked/:id',
+      templateUrl: 'app/booked/bookedTmpl.html'
+    })
+    .state('adventurers', {
+      url: '/adventurers',
+      templateUrl: 'app/about/adventurers/adventurersTmpl.html',
+      parent: 'home'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'app/about/contact/contactTmpl.html',
+      parent: 'home'
+    });
+
+  $urlRouterProvider
+    .otherwise('/');
+});
+```
+
+</details>
 
 ## Step 3
 
