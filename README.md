@@ -32,6 +32,13 @@ In this step, you'll familarize yourself with the existing code base.
 
 In this step, we'll configure the router to handle all the other provided views.
 
+### Instructions
+
+* Open `app/app.js`.
+* Add the following new routes to the `config`:
+  * Name: `packages` - Url: `/packages/:country` - Template: `app/packages/packagesTmpl.html`.
+  * Name: `locations` - Url: `/locations` - Template: `app/locations/locationsTmpl.html`.
+
 ## Step 3
 
 ### Summary
