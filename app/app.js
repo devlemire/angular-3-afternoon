@@ -2,7 +2,7 @@ angular.module('devmtnTravel', ['ui.router']).config( function ( $stateProvider,
   $stateProvider
     .state('home',{
       url:'/',
-      templateUrl: "js/about/aboutTmpl.html"
+      templateUrl: "app/about/aboutTmpl.html"
     });
 
   $urlRouterProvider
