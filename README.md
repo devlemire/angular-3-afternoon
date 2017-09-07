@@ -18,7 +18,7 @@ Live example: <a href="#">Click Me!</a>
 
 ### Summary
 
-In this step, you'll take as much time as you need to familarize yourself with the existing code base.
+In this step, you'll familarize yourself with the existing code base.
 
 ### Instructions
 
