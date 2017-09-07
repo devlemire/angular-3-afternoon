@@ -1,4 +1,4 @@
-angular.module('devmtnTravel').service('mainSrv', function(){
+angular.module('devmtnTravel').service('mainSrvc', function(){
     this.travelInfo = [{
         country: 'United States',
         image: "../img/US.jpg",
