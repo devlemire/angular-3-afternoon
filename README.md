@@ -50,7 +50,75 @@ In this step, we'll configure the router to handle all the other provided views.
 
 <br />
 
+Let's begin by opening `app/app.js`. In order for a user to navigate our Angular application, we'll need to add the remaining views into your router configuration. We can add more routes to our configuration by chaining on more `.state`s. All our additions will look similiar except for `adventurers` and `contact`. These routes will also include a `parent` property. This is what makes a route a sub-route. We'll assign the parent as `home` to make them sub-routes of `home`.
 
+So if we wanted to add a route for `packages` we would just chain on another `.state` and use the information provided in the instructions above:
+
+```js
+  $stateProvider
+    .state('home',{
+      url:'/',
+      templateUrl: 'app/about/aboutTmpl.html'
+    })
+    .state('packages', {
+      url: '/packages/:country',
+      templateUrl: 'app/packages/packagesTmpl.html'
+    })
+```
+
+This would look the same for `locations` and `booked`:
+
+```js
+  $stateProvider
+    .state('home',{
+      url:'/',
+      templateUrl: 'app/about/aboutTmpl.html'
+    })
+    .state('packages', {
+      url: '/packages/:country',
+      templateUrl: 'app/packages/packagesTmpl.html'
+    })
+    .state('locations', {
+      url: '/locations',
+      templateUrl: 'app/locations/locationsTmpl.html'
+    })
+    .state('booked', {
+      url: '/booked/:id',
+      templateUrl: 'app/booked/bookedTmpl.html'
+    })
+```
+
+And then finally we can add the route for `adventurers` and `contact` which will have a `parent` of `home`.
+
+```js
+  $stateProvider
+    .state('home',{
+      url:'/',
+      templateUrl: 'app/about/aboutTmpl.html'
+    })
+    .state('packages', {
+      url: '/packages/:country',
+      templateUrl: 'app/packages/packagesTmpl.html'
+    })
+    .state('locations', {
+      url: '/locations',
+      templateUrl: 'app/locations/locationsTmpl.html'
+    })
+    .state('booked', {
+      url: '/booked/:id',
+      templateUrl: 'app/booked/bookedTmpl.html'
+    })
+    .state('adventurers', {
+      url: '/adventurers',
+      templateUrl: 'app/about/adventurers/adventurersTmpl.html',
+      parent: 'home'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'app/about/contact/contactTmpl.html',
+      parent: 'home'
+    });
+```
 
 </details>
 
