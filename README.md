@@ -50,7 +50,7 @@ In this step, we'll configure the router to handle all the other provided views.
 
 <br />
 
-Let's begin by opening `app/app.js`. In order for a user to navigate our Angular application, we'll need to add the remaining views into your router configuration. We can add more routes to our configuration by chaining on more `.state`s. All our additions will look similiar except for `adventurers` and `contact`. These routes will also include a `parent` property. This is what makes a route a sub-route. We'll assign the parent as `home` to make them sub-routes of `home`.
+Let's begin by opening `app/app.js`. In order for a user to navigate our Angular application, we'll need to add the remaining views into our router configuration. We can add more routes to our configuration by chaining on more `.state`s. All our additions will look similiar except for `adventurers` and `contact`. These routes will also include a `parent` property. This is what makes a route a sub-route. We'll assign the parent as `home` to make them sub-routes of `home`.
 
 So if we wanted to add a route for `packages` we would just chain on another `.state` and use the information provided in the instructions above:
 
@@ -88,7 +88,7 @@ This would look the same for `locations` and `booked`:
     })
 ```
 
-And then finally we can add the route for `adventurers` and `contact` which will have a `parent` of `home`.
+And then finally we can add the route for `adventurers` and `contact` which will have a `parent` of `home`:
 
 ```js
   $stateProvider
