@@ -407,7 +407,148 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
 
 ### Instructions
 
-* Open each template HTML file and locate the empty `ui-sref` attributes.
+* Open each template HTML file and locate the comment explaining the `ui-sref`.
+  * Don't worry about the `id` and `country` for the `booked` and `packages` route in this step.
+* Open `index.html`.
+* Locate the  `<!--Navigation Section-->` comment.
+  * Add `ui-sref` tags to the correct view.
+    * Locations should route to `locations`.
+    * Packages should route to `packages`.
+    * The logo shouldn't have a route.
+    * About should route to `home`.
+    * Contact should route to `contact`.
+
+### Solution
+
+<details>
+
+<summary> <code> app/about/adventurers/adventurersTmpl.html </code> </summary>
+
+```html
+<section class="adventurers-main">
+  <h1>WE ARE THE <em style="color:#12F0F0">ADVENTURERS</em></h1>
+
+  <section class="adventurers-inner">
+    <section class="adventure-card">
+      <img src="../img/Grizzly-Adams.jpg" alt="Grizzly Adams">
+      <h2>Grizzly Adams</h2>
+      <p>Shabby chic 90's drinking vinegar irony kombucha meh. Fashion axe 8-bit everyday carry, locavore shabby chic small batch tote bag salvia ugh semiotics keffiyeh intelligentsia.</p>
+    </section>
+
+    <section class="adventure-card">
+      <img src="../img/Rally-Sisters.jpg" alt="Rally Sisters">
+      <h2>Rally Sisters</h2>
+      <p>Shabby chic 90's drinking vinegar irony kombucha meh. Fashion axe 8-bit everyday carry, locavore shabby chic small batch tote bag salvia ugh semiotics keffiyeh intelligentsia.</p>
+    </section>
+  </section>
+
+  <!--This button needs a ui-sref that points to packages-->
+  <button ui-sref="packages">View Packages</button>
+</section>
+
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/about/aboutTmpl.html </code> </summary>
+
+```html
+<section class="about-main">
+  <div class="about-image">
+      <img src="../img/About-img.jpg" alt="About Page Image">
+  </div>
+
+  <ui-view class="about-inner-right">
+    <section class="about-inner-intro">
+      <h1>WE ARE A GROUP OF <em style="color:#12F0F0">ADVENTURERS</em></h1>
+      <p>Maecenas rhoncus elit et mattis placerat. In aliquam eu velit gravida vulputate. Cras facilisis augue quis velit ultrices luctus. Duis eu turpis massa. Morbi iaculis porttitor feugiat. Suspendisse sit amet metus vulputate, fermentum sapien et, mollis massa. Quisque condimentum nunc vel nisl pellentesque, nec dapibus urna pulvinar. Nulla ac nisl arcu. Integer tincidunt mauris sed libero malesuada consequat. Vestibulum sodales lacus ornare, lobortis metus quis, laoreet eros. Duis tristique ligula sit amet malesuada accumsan. Nunc et metus maximus, faucibus magna quis, accumsan arcu. Nullam eleifend pretium vestibulum. Suspendisse nec diam lacus. Aliquam consequat tincidunt risus, et rutrum risus vehicula at.</p>
+
+      <!--This button needs a ui-sref that points to adventurers-->
+      <button ui-sref="adventurers"> MEET THE ADVENTURERS </button>
+    </section>
+  </ui-view>
+</section>
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/booked/bookedTmpl.html </code> </summary>
+
+```html
+<!-- Use the ng-style directive to change the background to the image link on the data object we are getting from the controller.
+      You will need to write a function that checks the url params and then loops over the data object in the service and then returns
+      the object the matches the id being passed in the url params. Do this in your controller -->
+<section class="booked-main-container" >
+  <h1>Thanks for trusting us with your trip to <br>   <!-- Data bind the city name here --> </h1>
+
+  <!--This button needs a ui-sref that points to packages -->
+  <button ui-sref="packages"> VIEW MORE PACKAGES </button>
+</section>
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/locations/locationsTmpl.html </code> </summary>
+
+```html
+<section class="locations-container">
+  <!-- This is where we need to repeat over our data that we are getting from our service via the controller . The controller should be getting the "travelInfo" data from the service. If you haven't made the controller, do that now and include it on your state object in app.js-->
+  <section class="location-card" >
+    <div class="image-container">
+      <!-- In the controller get the data from "travelInfo" and assign it to $scope -->
+      <!-- Once we have the data we can use {{}} to bind that data to our view -->
+      <!--Add the image link from the data here. Remember to put something in the alt tag, perhaps the name of the Country-->
+      <img ng-src="" alt="">
+    </div>
+
+    <div class="location-inner-left">
+      <!-- Now we can start to extract the data and bind it to our different elements here-->
+      <h1><!--The country name goes here--></h1>
+      <p><!--The description goes here--></p>
+    </div>
+
+    <div class="location-inner-right">
+      <h3>Package Start At $<!--The package price goes here--></h3>
+      
+      <!--This button needs a ui-sref that points to packages-->
+      <button ui-sref="packages">See country packages</button>
+    </div>
+  </section>
+</section>
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/packages/packagesTmpl.html </code> </summary>
+
+```html
+<section class="packages-main">
+  <!-- This is where we need to repeat over our "packageInfo" data that we are getting from our controller. The controller is getting the data from the service. If you haven't made the controller do that now and include it on your state object in app.js-->
+  <section class="package-card">
+    <!-- Once we have the data we can use {{}} to bind that data to our view -->
+    <!--Add the image link from the data here using ng-src. Remember to put something in the alt tag, perhaps the name of the city-->
+    <img alt="">
+    <!-- Now we can start to extract the data and bind it to our different elements here-->
+    <h6> <!--The city name goes here--> </h6>
+    <h1><!--The country name goes here--></h1>
+    <p><!--The description goes here--></p>
+    <h3>$<!--The package price goes here--></h3>
+
+    <!--This button needs a ui-sref that points to booked-->
+    <button ui-sref="booked">Book Now</button>
+  </section>
+</section>
+```
+
+</details>
 
 ## Step 6
 
