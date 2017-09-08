@@ -726,7 +726,7 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 
 <details>
 
-<summary> <code> bookedTmpl.html </code> </summary>
+<summary> <code> app/booked/bookedTmpl.html </code> </summary>
 
 ```html
 <section class="booked-main-container" ng-style="{ 'background-image': 'url({{ package.image }})' }">
