@@ -920,11 +920,68 @@ angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mai
 
 ### Summary
 
-In this step, we'll complete the `packages` feature.
+In this step, we'll complete the `packages` feature. The packages feature is designed to show all available packages by country. It will get the list of packages from `packageInfo` on `mainSrvc`. It will then determine which `packages` to show on the DOM based on the country specified in the URL.
 
 ### Instructions
 
+* Open `app/packages/packagesTmpl.html`, `app/packages/packagesCtrl.js`, and `app/mainSrvc.js`.
+  * We won't need to make any coding changes to `mainSrvc.js`, but you can use this file to see what data we'll be looping through.
+* Inside of `locationsCtrl.js`:
+  * Inject `$stateParms` into the controller.
+  * Inject `mainSrvc` into the controller.
+  * Assign a new `$scope` variable called `allPackages` that equals the `packageInfo` array on `mainSrvc`.
+  * Assign a new `$scope` variable called `packages` that equals only the `packages` that match the country specified in the URL.
+* Inside of `locationsTmpl.html`:
+  * Add a `ng-repeat` through `packages` on the `section` element with the class name of `package-card`.
+    * Update the `img` element's `ng-src` to be the `package`'s image.
+    * Update the `img` element's `alt` to be the `package`'s country.
+    * Update the `h6` element's value to be the `package`'s city.
+    * Update the `h1` element's value to be the `package`'s country.
+    * Update the `p` element's value to be the `package`'s desc.
+    * Update the `h3` element's value to be the `package`'s price.
+  * Fix the `ui-sref` to include an `id` parameter that equals the `package`'s `id`.
+
 ### Solution
+
+<details>
+
+<summary> <code> app/packages/packagesCtrl.js </code> </summary>
+
+```js
+angular.module('devmtnTravel').controller('packagesCtrl', function( $scope, $stateParams, mainSrvc ) {
+  $scope.allPackages = mainSrvc.packageInfo;
+
+  if ( $stateParams.country ) {
+    $scope.packages = $scope.allPackages.filter( function( package ) {
+      return package.country === $stateParams.country;
+    });
+  }
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/packages/packagesTmpl.html </code> </summary>
+
+```html
+<section class="packages-main">
+  <section class="package-card" ng-repeat="package in packages">
+    <img ng-src="{{ package.image }}" alt="{{ package.country }}" />
+
+    <h6>{{ package.city }}</h6>
+    <h1>{{ package.country }}</h1>
+    <p>{{ package.desc }}</p>
+    <h3>${{ package.price }}</h3>
+
+    <!--This button needs a ui-sref that points to booked-->
+    <button ui-sref="booked({ id: '{{ package.id }}' })">Book Now</button>
+  </section>
+</section>
+```
+
+</details>
 
 ## Contributions
 
