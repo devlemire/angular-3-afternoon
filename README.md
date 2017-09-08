@@ -927,7 +927,7 @@ In this step, we'll complete the `packages` feature. The packages feature is des
 * Open `app/packages/packagesTmpl.html`, `app/packages/packagesCtrl.js`, and `app/mainSrvc.js`.
   * We won't need to make any coding changes to `mainSrvc.js`, but you can use this file to see what data we'll be looping through.
 * Inside of `locationsCtrl.js`:
-  * Inject `$stateParms` into the controller.
+  * Inject `$stateParams` into the controller.
   * Inject `mainSrvc` into the controller.
   * Assign a new `$scope` variable called `allPackages` that equals the `packageInfo` array on `mainSrvc`.
   * Assign a new `$scope` variable called `packages` that equals only the `packages` that match the country specified in the URL.
@@ -982,6 +982,10 @@ angular.module('devmtnTravel').controller('packagesCtrl', function( $scope, $sta
 ```
 
 </details>
+
+<br />
+
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/5g.gif" />
 
 ## Contributions
 
