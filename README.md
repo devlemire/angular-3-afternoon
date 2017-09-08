@@ -992,7 +992,59 @@ In this step, we'll complete the `packages` feature. The packages feature is des
 
 <br />
 
+Let's begin by opening `app/packages/packagesCtrl.js`. We'll need access to the `package` ID in the URL and access to the `packageInfo` array on `mainSrvc.js`. So let's inject `$stateParams` and `mainSrvc` into the controller.
 
+```js
+angular.module('devmtnTravel').controller('packagesCtrl', function( $scope, $stateParams, mainSrvc ) {
+
+});
+```
+
+Now that we have access to these things, we can assign a new `$scope` variable called `allPackages` that equals the `packageInfo` array on `mainSrvc.js`. We'll also need another `$scope` variable called `package`. We can determine the value of `package` by `filtering` `$scope.allPackages` by `country`. Remember that this page is loaded with a URL parameter called `country`.
+
+```js
+angular.module('devmtnTravel').controller('packagesCtrl', function( $scope, $stateParams, mainSrvc ) {
+  $scope.allPackages = mainSrvc.packageInfo;
+
+  if ( $stateParams.country ) {
+    $scope.packages = $scope.allPackages.filter( function( package ) {
+      return package.country === $stateParams.country;
+    });
+  }
+});
+```
+
+We can then use `$scope.packages` with an `ng-repeat` to show all the packages on the DOM. Let's open `app/packages/packagesTmpl.html` and locate the `section` element with the class of `package-card`. Let's add an `ng-repeat` through `packages` on this element. We will also the following elements inside of `package-card`:
+
+* `img` element's `ng-src` to be the `package`'s image.
+* `img` element's `alt` to be the `package`'s country.
+* `h6` element's value to be the `package`'s city.
+* `h1` element's value to be the `package`'s country.
+* `p` element's value to be the `package`'s desc.
+* `h3` element's value to be the `package`'s price.
+
+```html
+<section class="packages-main">
+  <section class="package-card" ng-repeat="package in packages">
+    <img ng-src="{{ package.image }}" alt="{{ package.country }}" />
+
+    <h6>{{ package.city }}</h6>
+    <h1>{{ package.country }}</h1>
+    <p>{{ package.desc }}</p>
+    <h3>${{ package.price }}</h3>
+
+    <!--This button needs a ui-sref that points to booked-->
+    <button ui-sref="booked">Book Now</button>
+  </section>
+</section>
+```
+
+Lastly, we'll need to update the value of the `ui-sref` to include the `package`'s id as a route parameter.
+
+```html
+<!--This button needs a ui-sref that points to booked-->
+<button ui-sref="booked({ id: '{{ package.id }}' })">Book Now</button>
+```
 
 </details>
 
