@@ -405,6 +405,10 @@ In this step, we'll test the controllers we just made to make sure everything is
 
 In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow the user to navigate the application.
 
+### Instructions
+
+* Open each template HTML file and locate the empty `ui-sref` attributes.
+
 ## Step 6
 
 ### Summary
