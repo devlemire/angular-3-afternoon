@@ -882,7 +882,9 @@ In this step, we'll complete the `packages` feature.
 <summary> <code> app/locations/locationsCtrl.js </code> </summary>
 
 ```js
-
+angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mainSrvc ) {
+  $scope.locations = mainSrvc.travelInfo;
+});
 ```
 
 </details>
@@ -892,7 +894,25 @@ In this step, we'll complete the `packages` feature.
 <summary> <code> app/locations/locationsTmpl.html </code> </summary>
 
 ```html
+<section class="locations-container">
+  <section class="location-card" >
+    <div class="image-container">
+      <img ng-src="{{ location.image }}" alt="{{ location.country }}" />
+    </div>
 
+    <div class="location-inner-left">
+      <h1>{{ location.country }}</h1>
+      <p>{{ location.desc }}</p>
+    </div>
+
+    <div class="location-inner-right">
+      <h3>Package Start At ${{ location.price }}</h3>
+      
+      <!--This button needs a ui-sref that points to packages-->
+      <button ui-sref="packages({ country: '{{ location.country' })">See country packages</button>
+    </div>
+  </section>
+</section>
 ```
 
 </details>
