@@ -495,19 +495,14 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
 
 ```html
 <section class="locations-container">
-  <!-- This is where we need to repeat over our data that we are getting from our service via the controller . The controller should be getting the "travelInfo" data from the service. If you haven't made the controller, do that now and include it on your state object in app.js-->
   <section class="location-card" >
     <div class="image-container">
-      <!-- In the controller get the data from "travelInfo" and assign it to $scope -->
-      <!-- Once we have the data we can use {{}} to bind that data to our view -->
-      <!--Add the image link from the data here. Remember to put something in the alt tag, perhaps the name of the Country-->
       <img ng-src="" alt="">
     </div>
 
     <div class="location-inner-left">
-      <!-- Now we can start to extract the data and bind it to our different elements here-->
-      <h1><!--The country name goes here--></h1>
-      <p><!--The description goes here--></p>
+      <h1></h1>
+      <p></p>
     </div>
 
     <div class="location-inner-right">
