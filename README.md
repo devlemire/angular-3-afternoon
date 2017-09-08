@@ -649,7 +649,70 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 
 <br />
 
+Let's begin by opening `index.html`. The controllers we'll be modifying over the next steps will need to use data from the `mainSrvc`. We'll need to add it in a `script` tag so our Angular application will have access to the service.
 
+```html
+<script src="app/mainSrvc.js"></script>
+```
+
+Now let's open `app/booked/bookedCtrl.js` and get the data we need from `mainSrvc`. The booked feature is designed to thank the customer for booking a trip to `x` location. Where `x` should show the package's `city` and `country`. To start, we'll need to get the `packageInfo` array from `mainSrvc`. Let's inject `mainSrvc` into the controller and assign `mainSrvc.packageInfo` into a `$scope` variable called `packages`.
+
+```js
+angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, mainSrvc ) {
+  $scope.packages = mainSrvc.packageInfo;
+});
+```
+
+Using this packages array, we can search through it and find the package object that has the same `id` as the `id` in the URL. In order to be able to read the `id` from the URL, we'll need to inject `$stateParams` into the controller.
+
+```js
+angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $stateParams, mainSrvc ) {
+  $scope.packages = mainSrvc.packageInfo;
+});
+```
+
+Alright, time for some logic. We now have access to `$stateParams.id` ( the id in the URL ) and the packages array ( $scope.packages ). We can add an `if` statement to check if the page was loaded with an `id` in the URL. If it was, we can get the index of the package object in packages by using the `findIndex` method.
+
+```js
+angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $stateParams, mainSrvc ) {
+  $scope.packages = mainSrvc.packageInfo;
+
+  if ( $stateParams.id ) {
+    $scope.packageIndex = $scope.packages.findIndex( function( package ) {
+      return package.id === parseInt( $stateParams.id );
+    }); 
+  }
+});
+```
+
+`$scope.packageIndex` will be either be assigned the `index` of the package object in `$scope.packages` or `-1` if it is not found in the array. We can use this as another conditional to assign a new `$scope` variable called `$scope.package`.
+
+```js
+angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $stateParams, mainSrvc ) {
+  $scope.packages = mainSrvc.packageInfo;
+
+  if ( $stateParams.id ) {
+    $scope.packageIndex = $scope.packages.findIndex( function( package ) {
+      return package.id === parseInt( $stateParams.id );
+    }); 
+
+    if ( $scope.packageIndex !== -1 ) {
+      $scope.package = $scope.packages[ $scope.packageIndex ];
+    }
+  }
+});
+```
+
+Now that our controller is setup, we can open the template HTML and add the package's `city` and `country` to the DOM. We'll also add a `ng-style` to the parent `section` element to set the `background-image` to the package's `image`. When using `ng-style` the syntax follows: `{ 'css-property': 'css-value' }`. You can use `{{}}` to insert `$scope.values` into `ng-style`.
+
+```html
+<section class="booked-main-container" ng-style="{ 'background-image': 'url({{ package.image }})' }">
+  <h1>Thanks for trusting us with your trip to <br>  {{ package.city }}, {{ package.country }}</h1>
+
+  <!--This button needs a ui-sref that points to packages -->
+  <button ui-sref="packages"> VIEW MORE PACKAGES </button>
+</section>
+```
 
 </details>
 
@@ -748,12 +811,12 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $state
   $scope.packages = mainSrvc.packageInfo;
 
   if ( $stateParams.id ) {
-    $scope.packageId = $scope.packages.findIndex( function( package ) {
+    $scope.packageIndex = $scope.packages.findIndex( function( package ) {
       return package.id === parseInt( $stateParams.id );
     }); 
 
-    if ( $scope.packageId !== -1 ) {
-      $scope.package = $scope.packages[ $scope.packageId ];
+    if ( $scope.packageIndex !== -1 ) {
+      $scope.package = $scope.packages[ $scope.packageIndex ];
     }
   }
 });
