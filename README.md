@@ -630,12 +630,108 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 
 ### Instructions
 
+* Open `index.html`.
+* Add a `script` tag for `app/mainSrvc.js`.
 * Open `app/booked/bookedTmpl.html`, `app/booked/bookedCtrl.js`, and `app/mainSrvc.js`.
+  * We won't need to make any coding changes to `mainSrvc.js`, but you can use this file to see what data we'll be looping through.
 * Inside of `bookedCtrl.js`: 
   * Inject `$stateParams` into the controller.
+  * Inject `mainSrvc` into the controller.
   * Assign a new `$scope` variable called packages that equals the `packageInfo` array on `mainSrvc`.
   * Find the `packageInfo` object that matches the `id` on `$stateParams`.
     * Assign a new `$scope` variable called `package` that equals this object.
+* Inside of `bookedTmpl.html`:
+  * Display the package's city followed by the package's country in the `h1` element.
+    * Example: Bordeaux, France
+
+<details>
+
+<summary> Detailed Instructions </summary>
+
+<br />
+
+
+
+</details>
+
+<details>
+
+<summary> <code> index.html </code> </summary>
+
+```html
+<!DOCTYPE html>
+<html lang="en" ng-app="devmtnTravel">
+  <head>
+    <title>DevMtn Travels</title>
+
+    <!-- META INFO -->
+    <meta charset="UTF-8">
+    <meta name="description" content="DevMtn Travels app using ui-routes ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--RESET FILE -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!--MAIN FILE-->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- View Styles -->
+    <link rel="stylesheet" href="app/about/about.css">
+    <link rel="stylesheet" href="app/about/adventurers/adventurers.css">
+    <link rel="stylesheet" href="app/about/contact/contact.css">
+    <link rel="stylesheet" href="app/locations/locations.css">
+    <link rel="stylesheet" href="app/packages/packages.css">
+    <link rel="stylesheet" href="app/booked/booked.css">
+  </head>
+
+  <body>
+    <main role="main">
+      <section class="home-page-top-container">
+        <header>
+          <nav>
+            <ul>
+              <!--Navigation Section-->
+              <li><a ui-sref="locations">Locations</a></li>
+              <li><a ui-sref="packages">Packages</a></li>
+              <li><a><img src="./img/DevCircleWhite.svg" alt="DevMountain Logo"></a></li>
+              <li><a ui-sref="home">About</a></li>
+              <li><a ui-sref="contact">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        <h1 class="intro-text">Discover</h1>
+      </section>
+
+      <!-- Here we are placing the ui-view tag this is where our views will be injected when we change routes. -->
+      <ui-view></ui-view>
+
+    </main>
+
+    <!-- Including angular and ui-router then our javascript files. ORDER MATTERS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+    <!--Our Custom Script Files-->
+    <script src="app/app.js"></script>
+    <script src="app/locations/locationsCtrl.js"></script>
+    <script src="app/packages/packagesCtrl.js"></script>
+    <script src="app/booked/bookedCtrl.js"></script>
+    <script src="app/mainSrvc.js"></script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+
+<summary> <code> bookedTmpl.html </code> </summary>
+
+```html
+
+```
+
+</details>
 
 ## Step to be determined
 
