@@ -890,7 +890,7 @@ angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mai
 
 ```html
 <section class="locations-container">
-  <section class="location-card" >
+  <section class="location-card" ng-repeat="location in locations">
     <div class="image-container">
       <img ng-src="{{ location.image }}" alt="{{ location.country }}" />
     </div>
