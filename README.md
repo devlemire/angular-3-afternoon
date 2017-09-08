@@ -618,6 +618,10 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
 
 </details>
 
+<br />
+
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/2g.gif" />
+
 ## Step 6
 
 ### Summary
