@@ -904,13 +904,17 @@ angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mai
       <h3>Package Start At ${{ location.price }}</h3>
       
       <!--This button needs a ui-sref that points to packages-->
-      <button ui-sref="packages({ country: '{{ location.country' })">See country packages</button>
+      <button ui-sref="packages({ country: '{{ location.country }}' })">See country packages</button>
     </div>
   </section>
 </section>
 ```
 
 </details>
+
+<br />
+
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/4g.gif" />
 
 ## Contributions
 
