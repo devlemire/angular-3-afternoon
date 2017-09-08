@@ -190,7 +190,41 @@ In this step, we'll create Angular controllers for `locations`, `packages`, and 
 
 <br />
 
+Let's begin by creating an empty controller file in `app/locations/`, `app/packages/`, and `app/booked/`. The file names I chose to use were `locationsCtrl.js`, `packagesCtrl.js`, and `bookedCtrl.js`. Inside each of these files we can create an empty controller file for the `devmtnTravel` Angular application.
 
+```js
+angular.module('devmtnTravel').controller('controllerName', function( $scope ) {
+
+});
+```
+
+Be sure to replace `controllerName` with the name of the controller. I used these names: `locationsCtrl`, `packagesCtrl`, and `bookedCtrl`. Now that our controllers are created, we'll need to import them into `index.html`. Let's add three `script` tags underneath `<!--Our Custom Script Files-->`.
+
+```html
+<script src="app/locations/locationsCtrl.js"></script>
+<script src="app/packages/packagesCtrl.js"></script>
+<script src="app/booked/bookedCtrl.js"></script>
+```
+
+We can then assign these controllers to routes in our router configuration. We'll assign `locationCtrl` to the locations route, `packagesCtrl` to the packages route, and `bookedCtrl` to the booked route.
+
+```js
+.state('packages', {
+  url: '/packages/:country',
+  templateUrl: 'app/packages/packagesTmpl.html',
+  controller: 'packagesCtrl'
+})
+.state('locations', {
+  url: '/locations',
+  templateUrl: 'app/locations/locationsTmpl.html',
+  controller: 'locationsCtrl'
+})
+.state('booked', {
+  url: '/booked/:id',
+  templateUrl: 'app/booked/bookedTmpl.html',
+  controller: 'bookedCtrl'
+})
+```
 
 </details>
 
@@ -297,6 +331,50 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope ) {
     <script src="app/booked/bookedCtrl.js"></script>
   </body>
 </html>
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/app.js </code> </summary>
+
+```js
+angular.module('devmtnTravel', ['ui.router']).config( function ( $stateProvider, $urlRouterProvider ) {
+  $stateProvider
+    .state('home',{
+      url:'/',
+      templateUrl: 'app/about/aboutTmpl.html'
+    })
+    .state('packages', {
+      url: '/packages/:country',
+      templateUrl: 'app/packages/packagesTmpl.html',
+      controller: 'packagesCtrl'
+    })
+    .state('locations', {
+      url: '/locations',
+      templateUrl: 'app/locations/locationsTmpl.html',
+      controller: 'locationsCtrl'
+    })
+    .state('booked', {
+      url: '/booked/:id',
+      templateUrl: 'app/booked/bookedTmpl.html',
+      controller: 'bookedCtrl'
+    })
+    .state('adventurers', {
+      url: '/adventurers',
+      templateUrl: 'app/about/adventurers/adventurersTmpl.html',
+      parent: 'home'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'app/about/contact/contactTmpl.html',
+      parent: 'home'
+    });
+
+  $urlRouterProvider
+    .otherwise('/');
+});
 ```
 
 </details>

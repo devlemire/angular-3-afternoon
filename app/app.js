@@ -6,15 +6,18 @@ angular.module('devmtnTravel', ['ui.router']).config( function ( $stateProvider,
     })
     .state('packages', {
       url: '/packages/:country',
-      templateUrl: 'app/packages/packagesTmpl.html'
+      templateUrl: 'app/packages/packagesTmpl.html',
+      controller: 'packagesCtrl'
     })
     .state('locations', {
       url: '/locations',
-      templateUrl: 'app/locations/locationsTmpl.html'
+      templateUrl: 'app/locations/locationsTmpl.html',
+      controller: 'locationsCtrl'
     })
     .state('booked', {
       url: '/booked/:id',
-      templateUrl: 'app/booked/bookedTmpl.html'
+      templateUrl: 'app/booked/bookedTmpl.html',
+      controller: 'bookedCtrl'
     })
     .state('adventurers', {
       url: '/adventurers',
