@@ -18,7 +18,7 @@ angular.module('devmtnTravel').service('mainSrvc', function(){
 		this.packageInfo = [{
 				city: "Bordeaux",
 				country: "France",
-				image: "/img/Borduaex.jpg",
+				image: "img/Borduaex.jpg",
 				desc: "Bordeaux, is a port city on the Garonne River in France. It’s known for its Gothic Cathédrale Saint-André, 18th- to 19th-century mansions and notable art museums such as the Musée des Beaux-Arts de Bordeaux.",
 				id: 2664,
 				price: 3049.63

@@ -479,9 +479,6 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
 <summary> <code> app/booked/bookedTmpl.html </code> </summary>
 
 ```html
-<!-- Use the ng-style directive to change the background to the image link on the data object we are getting from the controller.
-      You will need to write a function that checks the url params and then loops over the data object in the service and then returns
-      the object the matches the id being passed in the url params. Do this in your controller -->
 <section class="booked-main-container" >
   <h1>Thanks for trusting us with your trip to <br>   <!-- Data bind the city name here --> </h1>
 
@@ -643,6 +640,8 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 * Inside of `bookedTmpl.html`:
   * Display the package's city followed by the package's country in the `h1` element.
     * Example: Bordeaux, France
+  * Add an `ng-style` to the parent `section` element:
+    * Set the `background-image` to the value of `image` on the package object.
 
 <details>
 
@@ -730,10 +729,7 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 <summary> <code> bookedTmpl.html </code> </summary>
 
 ```html
-<!-- Use the ng-style directive to change the background to the image link on the data object we are getting from the controller.
-      You will need to write a function that checks the url params and then loops over the data object in the service and then returns
-      the object the matches the id being passed in the url params. Do this in your controller -->
-<section class="booked-main-container" ng-style="{ 'background-image': {{ package.image }} }">
+<section class="booked-main-container" ng-style="{ 'background-image': 'url({{ package.image }})' }">
   <h1>Thanks for trusting us with your trip to <br>  {{ package.city }}, {{ package.country }}</h1>
 
   <!--This button needs a ui-sref that points to packages -->
