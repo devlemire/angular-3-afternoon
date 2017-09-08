@@ -824,11 +824,19 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $state
 
 </details>
 
-## Step to be determined
+<br />
+
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/3g.gif" />
+
+## Step 7
 
 ### Summary
 
-In this step, we'll finish the template for `booked` by checking for the `id` on `$state.params` and assigning a value on `$scope` based on its value
+In this step, we'll complete the `locations` feature.
+
+### Summary
+
+In this step, we'll complete the `packages` feature.
 
 ## Contributions
 
