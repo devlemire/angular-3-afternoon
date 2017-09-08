@@ -632,7 +632,10 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 
 * Open `app/booked/bookedTmpl.html`, `app/booked/bookedCtrl.js`, and `app/mainSrvc.js`.
 * Inside of `bookedCtrl.js`: 
+  * Inject `$stateParams` into the controller.
   * Assign a new `$scope` variable called packages that equals the `packageInfo` array on `mainSrvc`.
+  * Find the `packageInfo` object that matches the `id` on `$stateParams`.
+    * Assign a new `$scope` variable called `package` that equals this object.
 
 ## Step to be determined
 
