@@ -854,8 +854,8 @@ In this step, we'll complete the `packages` feature.
   * Assign a new `$scope` variable called `locations` that equals the `travelInfo` array on `mainSrvc`.
 * Inside of `locationsTmpl.html`:
   * Add a `ng-repeat` through `locations` on the `section` element with the class of `location-card`.
-    * Update the `img` element's src to be the `location`'s image.
-    * Update the `img` element's alt to be the `location`'s country.
+    * Update the `img` element's `ng-src` to be the `location`'s image.
+    * Update the `img` element's `alt` to be the `location`'s country.
     * Update the `h1` element's value to be the `location`'s country.
     * Update the `p` element's value to be the `location`'s desc.
   * Fix the `ui-sref` to include a country parameter that equals the `location`'s country.
@@ -866,7 +866,52 @@ In this step, we'll complete the `packages` feature.
 
 <br />
 
+Let's begin opening `app/locations/locationsCtrl.js`. We'll need access to the `travelInfo` array on `mainSrvc`, so let's inject `mainSrvc` into our controller.
 
+```js
+angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mainSrvc ) {
+
+});
+```
+
+We can then assign a new `$scope` variable called `locations` that equals the `travelInfo` array on `mainSrvc`.
+
+```js
+angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mainSrvc ) {
+  $scope.locations = mainSrvc.travelInfo;
+});
+```
+
+Now that our controller is setup, we can repeat through `locations` on the DOM. We'll want to update the `ng-src` to be the `location`'s image and the `alt` to be the `location`'s country on the `img` element. We'll also want to update the `h1` element to have a value of the `location`'s country and update the `p` element to have a value of the `location`'s desc.
+
+```html
+<section class="locations-container">
+  <section class="location-card" ng-repeat="location in locations">
+    <div class="image-container">
+      <img ng-src="{{ location.image }}" alt="{{ location.country }}" />
+    </div>
+
+    <div class="location-inner-left">
+      <h1>{{ location.country }}</h1>
+      <p>{{ location.desc }}</p>
+    </div>
+
+    <div class="location-inner-right">
+      <h3>Package Start At ${{ location.price }}</h3>
+      
+      <!--This button needs a ui-sref that points to packages-->
+      <button ui-sref="packages">See country packages</button>
+    </div>
+  </section>
+</section>
+```
+
+Lastly, we'll need to fix the `ui-sref` so that it probably calls the `packages` route with the `location`'s country.
+
+```html
+<!--This button needs a ui-sref that points to packages-->
+<button ui-sref="packages({ country: '{{ location.country }}' })">See country packages</button>
+```
 
 </details>
 
