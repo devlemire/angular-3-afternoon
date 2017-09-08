@@ -838,7 +838,7 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $state
 
 <br />
 
-<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/3g.gif" />
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/3-1g.gif" />
 
 ## Step 7
 
