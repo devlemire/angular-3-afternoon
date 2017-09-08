@@ -808,7 +808,7 @@ Finally, we'll need to update the `ui-sref` to link to the correct `packages` ro
   <h1>Thanks for trusting us with your trip to <br>  {{ package.city }}, {{ package.country }}</h1>
 
   <!--This button needs a ui-sref that points to packages -->
-  <button ui-sref="packages"> VIEW MORE PACKAGES </button>
+  <button ui-sref="packages({ country: '{{ package.country }}' })"> VIEW MORE PACKAGES </button>
 </section>
 ```
 
@@ -844,11 +844,58 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $state
 
 ### Summary
 
-In this step, we'll complete the `locations` feature.
+In this step, we'll complete the `locations` feature. The locations feature is designed to show all the available packages by `country`. It'll will get the list of countries from `travelInfo` on `mainSrvc` and then display them on the DOM.
 
 ### Summary
 
 In this step, we'll complete the `packages` feature.
+
+### Instructions
+
+* Open `app/locations/locationsTmpl.html`, `app/locations/locationsCtrl.js`, and `app/mainSrvc.js`.
+  * We won't need to make any coding changes to mainSrvc.js, but you can use this file to see what data we'll be looping through.
+* Inside of `locationsCtrl.js`:
+  * Inject `mainSrvc` into the controller.
+  * Assign a new `$scope` variable called `locations` that equals the `travelInfo` array on `mainSrvc`.
+* Inside of `locationsTmpl.html`:
+  * Add a `ng-repeat` through `locations` on the `section` element with the class of `location-card`.
+    * Update the `img` element's src to be the `location`'s image.
+    * Update the `img` element's alt to be the `location`'s country.
+    * Update the `h1` element's value to be the `location`'s country.
+    * Update the `p` element's value to be the `location`'s desc.
+  * Fix the `ui-sref` to include a country parameter that equals the `location`'s country.
+
+<details>
+
+<summary> Detailed Instructions </summary>
+
+<br />
+
+
+
+</details>
+
+### Solution
+
+<details>
+
+<summary> <code> app/locations/locationsCtrl.js </code> </summary>
+
+```js
+
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/locations/locationsTmpl.html </code> </summary>
+
+```html
+
+```
+
+</details>
 
 ## Contributions
 

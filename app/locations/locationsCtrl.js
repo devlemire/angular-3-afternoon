@@ -1,3 +1,5 @@
-angular.module('devmtnTravel').controller('locationsCtrl', function( $scope ) {
-  
+angular.module('devmtnTravel').controller('locationsCtrl', function( $scope, mainSrvc ) {
+  $scope.locations = mainSrvc.travelInfo;
+
+  console.log( $scope.locations );
 });
