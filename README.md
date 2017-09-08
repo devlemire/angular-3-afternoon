@@ -654,6 +654,8 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 
 </details>
 
+### Solution
+
 <details>
 
 <summary> <code> index.html </code> </summary>
@@ -728,7 +730,37 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 <summary> <code> bookedTmpl.html </code> </summary>
 
 ```html
+<!-- Use the ng-style directive to change the background to the image link on the data object we are getting from the controller.
+      You will need to write a function that checks the url params and then loops over the data object in the service and then returns
+      the object the matches the id being passed in the url params. Do this in your controller -->
+<section class="booked-main-container" ng-style="{ 'background-image': {{ package.image }} }">
+  <h1>Thanks for trusting us with your trip to <br>  {{ package.city }}, {{ package.country }}</h1>
 
+  <!--This button needs a ui-sref that points to packages -->
+  <button ui-sref="packages"> VIEW MORE PACKAGES </button>
+</section>
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/booked/bookedCtrl.js </code> </summary>
+
+```js
+angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $stateParams, mainSrvc ) {
+  $scope.packages = mainSrvc.packageInfo;
+
+  if ( $stateParams.id ) {
+    $scope.packageId = $scope.packages.findIndex( function( package ) {
+      return package.id === parseInt( $stateParams.id );
+    }); 
+
+    if ( $scope.packageId !== -1 ) {
+      $scope.package = $scope.packages[ $scope.packageId ];
+    }
+  }
+});
 ```
 
 </details>
