@@ -169,7 +169,137 @@ angular.module('devmtnTravel', ['ui.router']).config( function ( $stateProvider,
 
 ### Summary
 
-In this step, we'll create Angular controllers for `locations`, `packages`, and `booked`.
+In this step, we'll create Angular controllers for `locations`, `packages`, and `booked`. We'll then assign the new controllers to our router configuration.
+
+### Instructions
+
+* Create a new controller file in:
+  * `app/locations/`.
+  * `app/packages/`.
+  * `app/booked/`.
+* Open `index.html`.
+* Add `script` tags for each new controller in `index.html`.
+* Open `app/app.js`.
+* Assign the `locationCtrl` to the `locations` route.
+* Assign the `packagesCtrl` to the `packages` route.
+* Assign the `bookedCtrl` to the `booked` route.
+
+<details>
+
+<summary> Detailed Instructions </summary>
+
+<br />
+
+
+
+</details>
+
+### Solution
+
+<details>
+
+<summary> <code> app/locations/locationCtrl.js </code> </summary>
+
+```js
+angular.module('devmtnTravel').controller('locationsCtrl', function( $scope ) {
+
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/packages/packagesCtrl.js </code> </summary>
+
+```js
+angular.module('devmtnTravel').controller('packagesCtrl', function( $scope ) {
+
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> app/booked/bookedCtrl.js </code> </summary>
+
+```js
+angular.module('devmtnTravel').controller('bookedCtrl', function( $scope ) {
+
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> index.html </code> </summary>
+
+```html
+<!DOCTYPE html>
+<html lang="en" ng-app="devmtnTravel">
+  <head>
+    <title>DevMtn Travels</title>
+
+    <!-- META INFO -->
+    <meta charset="UTF-8">
+    <meta name="description" content="DevMtn Travels app using ui-routes ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--RESET FILE -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!--MAIN FILE-->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- View Styles -->
+    <link rel="stylesheet" href="app/about/about.css">
+    <link rel="stylesheet" href="app/about/adventurers/adventurers.css">
+    <link rel="stylesheet" href="app/locations/locations.css">
+    <link rel="stylesheet" href="app/packages/packages.css">
+    <link rel="stylesheet" href="app/contact/contact.css">
+    <link rel="stylesheet" href="app/booked/booked.css">
+  </head>
+
+  <body>
+    <main role="main">
+      <section class="home-page-top-container">
+        <header>
+          <nav>
+            <ul>
+              <!--Navigation section, this is where you will put your ui-sref's so you can naviagte to different views -->
+              <li><a>Locations</a></li>
+              <li><a>Packages</a></li>
+              <li><a><img src="./img/DevCircleWhite.svg" alt="DevMountain Logo"></a></li>
+              <li><a>About</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        <h1 class="intro-text">Discover</h1>
+      </section>
+
+      <!-- Here we are placing the ui-view tag this is where our views will be injected when we change routes. -->
+
+      <ui-view></ui-view>
+
+    </main>
+
+    <!-- Including angular and ui-router then our javascript files. ORDER MATTERS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+    <!--Our Custom Script Files-->
+    <script src="app/app.js"></script>
+    <script src="app/locations/locationsCtrl.js"></script>
+    <script src="app/packages/packagesCtrl.js"></script>
+    <script src="app/booked/bookedCtrl.js"></script>
+  </body>
+</html>
+```
+
+</details>
 
 ## Step 4
 
