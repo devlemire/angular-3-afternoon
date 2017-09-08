@@ -385,6 +385,20 @@ angular.module('devmtnTravel', ['ui.router']).config( function ( $stateProvider,
 
 In this step, we'll test the controllers we just made to make sure everything is hooked up correctly.
 
+### Instructions
+
+* Inside each controller we made in the previous step, add a new `$scope` variable called `test` and set it equal to some string.
+* Open all three template files ( `locationsTmpl.html`, `packagesTmpl.html`, `bookedTmpl.html` ):
+  * Add `{{ test }}` somewhere in the HTML.
+* In your browser, using the address bar, manually go to each route and make sure `$scope.test` is appearing on the DOM.
+* Once you can successfully see the value of `$scope.test` on each view:
+  * Remove `{{ test }}` from each template HTML file.
+  * Remove `$scope.test` from each controller file.
+
+### Solution
+
+<img src="https://github.com/devlemire/angular-3-afternoon/blob/solution/readme-assets/1g.gif" />
+
 ## Step 5
 
 ### Summary
