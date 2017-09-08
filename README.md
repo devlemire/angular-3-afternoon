@@ -550,6 +550,74 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
 
 </details>
 
+<details>
+
+<summary> <code> index.html </code> </summary>
+
+```html
+<!DOCTYPE html>
+<html lang="en" ng-app="devmtnTravel">
+  <head>
+    <title>DevMtn Travels</title>
+
+    <!-- META INFO -->
+    <meta charset="UTF-8">
+    <meta name="description" content="DevMtn Travels app using ui-routes ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--RESET FILE -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!--MAIN FILE-->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- View Styles -->
+    <link rel="stylesheet" href="app/about/about.css">
+    <link rel="stylesheet" href="app/about/adventurers/adventurers.css">
+    <link rel="stylesheet" href="app/about/contact/contact.css">
+    <link rel="stylesheet" href="app/locations/locations.css">
+    <link rel="stylesheet" href="app/packages/packages.css">
+    <link rel="stylesheet" href="app/booked/booked.css">
+  </head>
+
+  <body>
+    <main role="main">
+      <section class="home-page-top-container">
+        <header>
+          <nav>
+            <ul>
+              <!--Navigation section-->
+              <li><a ui-sref="locations">Locations</a></li>
+              <li><a ui-sref="packages">Packages</a></li>
+              <li><a><img src="./img/DevCircleWhite.svg" alt="DevMountain Logo"></a></li>
+              <li><a ui-sref="home">About</a></li>
+              <li><a ui-sref="contact">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        <h1 class="intro-text">Discover</h1>
+      </section>
+
+      <!-- Here we are placing the ui-view tag this is where our views will be injected when we change routes. -->
+      <ui-view></ui-view>
+
+    </main>
+
+    <!-- Including angular and ui-router then our javascript files. ORDER MATTERS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+    <!--Our Custom Script Files-->
+    <script src="app/app.js"></script>
+    <script src="app/locations/locationsCtrl.js"></script>
+    <script src="app/packages/packagesCtrl.js"></script>
+    <script src="app/booked/bookedCtrl.js"></script>
+  </body>
+</html>
+```
+
+</details>
+
 ## Step 6
 
 ### Summary
