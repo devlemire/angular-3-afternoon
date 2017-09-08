@@ -941,6 +941,16 @@ In this step, we'll complete the `packages` feature. The packages feature is des
     * Update the `h3` element's value to be the `package`'s price.
   * Fix the `ui-sref` to include an `id` parameter that equals the `package`'s `id`.
 
+<details>
+
+<summary> Detailed Instructions </summary>
+
+<br />
+
+
+
+</details>
+
 ### Solution
 
 <details>
