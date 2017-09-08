@@ -848,7 +848,7 @@ In this step, we'll complete the `packages` feature.
 ### Instructions
 
 * Open `app/locations/locationsTmpl.html`, `app/locations/locationsCtrl.js`, and `app/mainSrvc.js`.
-  * We won't need to make any coding changes to mainSrvc.js, but you can use this file to see what data we'll be looping through.
+  * We won't need to make any coding changes to `mainSrvc.js`, but you can use this file to see what data we'll be looping through.
 * Inside of `locationsCtrl.js`:
   * Inject `mainSrvc` into the controller.
   * Assign a new `$scope` variable called `locations` that equals the `travelInfo` array on `mainSrvc`.
