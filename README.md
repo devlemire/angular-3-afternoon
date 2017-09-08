@@ -631,7 +631,8 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
 ### Instructions
 
 * Open `app/booked/bookedTmpl.html`, `app/booked/bookedCtrl.js`, and `app/mainSrvc.js`.
-* Inside of `bookedCtrl.js`, assign a new `$scope` variable called packages that equals the `packageInfo` array on `mainSrvc`.
+* Inside of `bookedCtrl.js`: 
+  * Assign a new `$scope` variable called packages that equals the `packageInfo` array on `mainSrvc`.
 
 ## Step to be determined
 
