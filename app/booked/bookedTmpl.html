@@ -2,5 +2,5 @@
   <h1>Thanks for trusting us with your trip to <br>  {{ package.city }}, {{ package.country }}</h1>
 
   <!--This button needs a ui-sref that points to packages -->
-  <button ui-sref="packages"> VIEW MORE PACKAGES </button>
+  <button ui-sref="packages({ country: '{{ package.country }}' })"> VIEW MORE PACKAGES </button>
 </section>

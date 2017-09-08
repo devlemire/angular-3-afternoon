@@ -642,6 +642,7 @@ In this step, we'll complete the `booked` feature. The booked feature is designe
     * Example: Bordeaux, France
   * Add an `ng-style` to the parent `section` element:
     * Set the `background-image` to the value of `image` on the package object.
+  * Fix the `ui-sref` to include a country parameter that equals the package's country.
 
 <details>
 
@@ -685,7 +686,7 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $state
 });
 ```
 
-`$scope.packageIndex` will be either be assigned the `index` of the package object in `$scope.packages` or `-1` if it is not found in the array. We can use this as another conditional to assign a new `$scope` variable called `$scope.package`.
+`$scope.packageIndex` will either be assigned the `index` of the package object in `$scope.packages` or `-1` if it is not found in the array. We can use this as another conditional to assign a new `$scope` variable called `$scope.package`.
 
 ```js
 angular.module('devmtnTravel').controller('bookedCtrl', function( $scope, $stateParams, mainSrvc ) {
@@ -711,6 +712,17 @@ Now that our controller is setup, we can open the template HTML and add the pack
 
   <!--This button needs a ui-sref that points to packages -->
   <button ui-sref="packages"> VIEW MORE PACKAGES </button>
+</section>
+```
+
+Finally, we'll need to update the `ui-sref` to link to the correct `packages` route. If we look in `app/app.js`, in our router configuration, we'll see that the `packages` route is expecting a `country` parameter. To add parameters in a `ui-sref` all we need to do is add `({ paramName: paramValue })` next to the route name. If we take a look at our data in `mainSrvc` we can see that our package objects have a `property` called country. Therefore, we can use `{{ package.country }}` in the DOM to fix our `ui-sref` link.
+
+```html
+<section class="booked-main-container" ng-style="{ 'background-image': 'url({{ package.image }})' }">
+  <h1>Thanks for trusting us with your trip to <br>  {{ package.city }}, {{ package.country }}</h1>
+
+  <!--This button needs a ui-sref that points to packages -->
+  <button ui-sref="packages({ country: '{{ package.country }}' })"> VIEW MORE PACKAGES </button>
 </section>
 ```
 
