@@ -256,9 +256,9 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope ) {
     <!-- View Styles -->
     <link rel="stylesheet" href="app/about/about.css">
     <link rel="stylesheet" href="app/about/adventurers/adventurers.css">
+    <link rel="stylesheet" href="app/about/contact/contact.css">
     <link rel="stylesheet" href="app/locations/locations.css">
     <link rel="stylesheet" href="app/packages/packages.css">
-    <link rel="stylesheet" href="app/contact/contact.css">
     <link rel="stylesheet" href="app/booked/booked.css">
   </head>
 
