@@ -302,7 +302,7 @@ angular.module('devmtnTravel').controller('bookedCtrl', function( $scope ) {
         <header>
           <nav>
             <ul>
-              <!--Navigation section, this is where you will put your ui-sref's so you can naviagte to different views -->
+              <!--Navigation Section-->
               <li><a>Locations</a></li>
               <li><a>Packages</a></li>
               <li><a><img src="./img/DevCircleWhite.svg" alt="DevMountain Logo"></a></li>
@@ -586,7 +586,7 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
         <header>
           <nav>
             <ul>
-              <!--Navigation section-->
+              <!--Navigation Section-->
               <li><a ui-sref="locations">Locations</a></li>
               <li><a ui-sref="packages">Packages</a></li>
               <li><a><img src="./img/DevCircleWhite.svg" alt="DevMountain Logo"></a></li>
