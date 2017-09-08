@@ -906,7 +906,7 @@ Now that our controller is setup, we can repeat through `locations` on the DOM. 
 </section>
 ```
 
-Lastly, we'll need to fix the `ui-sref` so that it probably calls the `packages` route with the `location`'s country.
+Lastly, we'll need to fix the `ui-sref` so that it properly calls the `packages` route with the `location`'s country.
 
 ```html
 <!--This button needs a ui-sref that points to packages-->
