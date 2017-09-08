@@ -626,9 +626,14 @@ In this step, we'll hook up the `ui-sref`'s in the template HTML files to allow 
 
 ### Summary
 
-In this step, we'll hook up the controllers to pull data from `mainSrvc`.
+In this step, we'll complete the `booked` feature. The booked feature is designed to work by getting an `id` from the URL. It will then find the corresponding `package` object from the `mainSrvc` `packageInfo` array and assign that object on `$scope`.
 
-## Step 7
+### Instructions
+
+* Open `app/booked/bookedTmpl.html`, `app/booked/bookedCtrl.js`, and `app/mainSrvc.js`.
+* Inside of `bookedCtrl.js`, assign a new `$scope` variable called packages that equals the `packageInfo` array on `mainSrvc`.
+
+## Step to be determined
 
 ### Summary
 
